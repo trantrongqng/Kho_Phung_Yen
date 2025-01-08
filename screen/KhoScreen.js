@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
 
 const KhoScreen = () => {
   const khoData = [
-    { id: '1', name: 'Mặt hàng 1', status: 'Tồn kho: 100' },
+    { id: '12', name: 'Mặt hàng 1', status: 'Tồn kho: 100' },
     { id: '2', name: 'Mặt hàng 2', status: 'Tồn kho: 500' },
     { id: '3', name: 'Mặt hàng 3', status: 'Tồn kho: 200' },
   ];
