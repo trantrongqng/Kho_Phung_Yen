@@ -2,13 +2,19 @@ workflows:
   ios:
     name: Build iOS
     max_build_duration: 120 # Optional: Thời gian tối đa cho mỗi build
+    environment:
+      flutter: stable # Cấu hình môi trường Flutter nếu bạn sử dụng Flutter
+      xcode: latest # Phiên bản Xcode
     steps:
       - checkout # Lấy mã nguồn từ repository
       - install:
           cocoapods: true # Cài đặt các pods nếu có
       - run:
+          name: Install dependencies
+          command: yarn install # Hoặc npm install nếu bạn sử dụng npm
+      - run:
           name: Build the app for iOS
           command: |
             npx react-native run-ios --configuration Release
-      - upload-artifact:
-          path: build/ios/Release-iphoneos/*.ipa # Đường dẫn đến file IPA được tạo ra sau build
+      - archive:
+          output: build/ios/Release-iphoneos/*.ipa # Đường dẫn đến file IPA được tạo ra sau build
